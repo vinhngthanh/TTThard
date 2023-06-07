@@ -1,0 +1,22 @@
+body {
+  background-image: url("../images/home_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  flex-direction: column;
+  color: brown;
+}
+
+h1 {
+  margin: 15px;
+}
+
+p {
+  margin: 0;
+}

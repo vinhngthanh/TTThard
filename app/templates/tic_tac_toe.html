@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block title %}Tic Tac Toe{% endblock %} {% block
+head %} {{ super() }}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',filename='css/tic_tac_toe.css') }}"
+/>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link
+  href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+  rel="stylesheet"
+/>
+{% endblock %}{% block content %}
+<div class="container">
+  <div class="players">Bot implements Minimax. Impossible to Win!</div>
+
+  <div class="players">
+    <div class="player">You:</div>
+    <div class="X">X</div>
+    <div class="computer">Computer:</div>
+    <div class="O">O</div>
+  </div>
+  <div class="turn">X goes first!</div>
+  <div class="board">
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='script/tic_tac_toe.js') }}"></script>
+{% endblock %}

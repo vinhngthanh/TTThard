@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block title %}All Players{% endblock %}{% block
+head %} {{ super() }}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',filename='css/list_all.css') }}"
+/>
+{% endblock %} {% block content %}
+<h1>All Players</h1>
+<div class="container">
+  {% for player in players %}
+  <div class="match-holder">
+    <a
+      class="name-holder"
+      href="{{ url_for('main.player_profile', player_id=player.id) }}"
+    >
+      <div class="match-des center">
+        <b>Username:</b>&nbsp;{{ player.username }}
+      </div>
+    </a>
+    <div class="stat-container">
+      <div class="match-des-win">
+        <b>Win: </b>{{ player.num_matches_win() }}
+      </div>
+      <div class="match-des-loss">
+        <b>Loss: </b>{{ player.num_matches_loss() }}
+      </div>
+      <div class="match-des-draw">
+        <b>Draw: </b>{{ player.num_matches_draw() }}
+      </div>
+      <div class="match-des-total">
+        <b>Total: </b>{{ player.num_matches_played() }}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

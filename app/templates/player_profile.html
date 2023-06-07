@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block title %}{{ player.username }}{% endblock %}
+{% block head %} {{ super() }}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',filename='css/player_profile.css') }}"
+/>
+{% endblock %}{% block content %}
+<div class="container">
+  <div class="username">Username: {{ player.username }}</div>
+  {% if current_user.email == player.email%}
+  <div>
+    <a href="{{ url_for('main.delete_player', player_id = player.id)}}"
+      >Delete Account</a
+    >
+  </div>
+  {% endif %}
+  <div class="email">Email: {{ player.email }}</div>
+  <div class="stats_container">
+    <div class="stat">Total Matches: {{ player.num_matches_played() }}</div>
+    <div class="line">
+      <div class="stat_win">Win: {{ player.num_matches_win() }}</div>
+      <div class="stat_loss">Loss: {{ player.num_matches_loss() }}</div>
+      <div class="stat_draw">Draw: {{ player.num_matches_draw() }}</div>
+    </div>
+  </div>
+  <div class="my-matches">History:</div>
+  <div class="matches">
+    {% for match in player.match %}
+    <div class="match-holder">
+      <div class="match-des"><b>Game ID:</b> {{ match.id }}</div>
+      <div class="match-des"><b>Start Time:</b> {{ match.start_time }}</div>
+      <div class="match-des"><b>Status:</b> {{ match.status }}</div>
+      <div class="match-des"><b>Moves:</b> {{ match.moves }}</div>
+      <div class="match-des"><b>Duration:</b> {{ match.duration }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
